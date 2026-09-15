@@ -1,0 +1,41 @@
+.workoutplanner-page {
+  min-height: calc(100vh - 120px);
+  padding: 2rem 1rem 3rem;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(15, 23, 42, 0.02));
+}
+
+.workoutplanner-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.2rem;
+  padding: 1.6rem;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.workoutplanner-header h1 {
+  margin: 0.2rem 0 0.4rem;
+  color: #0f172a;
+}
+
+.workoutplanner-eyebrow {
+  color: #16a34a;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.workoutplanner-subtitle {
+  margin: 0;
+  color: #334155;
+}
+
+.workoutplanner-state {
+  margin-top: 1rem;
+  background: #f8fafc;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #334155;
+}

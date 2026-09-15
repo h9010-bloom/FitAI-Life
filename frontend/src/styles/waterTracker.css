@@ -1,0 +1,201 @@
+.water-page {
+
+    display: flex;
+
+    justify-content: center;
+
+    padding: 40px;
+
+    background: #f4fbff;
+
+    min-height: 100vh;
+
+}
+
+.water-card {
+
+    width: 600px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+
+    text-align: center;
+
+}
+
+.water-circle {
+
+    width: 220px;
+
+    height: 220px;
+
+    margin: 35px auto;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    background: conic-gradient(var(--color) calc(var(--progress) * 1%), #e8eef7 0);
+
+    padding: 10px;
+
+    box-shadow:
+        0 15px 35px rgba(0, 180, 255, .25);
+
+}
+
+.water-circle::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    background: white;
+
+    border-radius: 50%;
+
+}
+
+.water-circle h2 {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 48px;
+
+    color: #008cff;
+
+    margin: 0;
+
+    font-weight: 700;
+
+}
+
+.water-circle span {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 8px;
+
+    font-size: 16px;
+
+    color: #666;
+
+}
+
+
+.water-buttons {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+}
+
+.water-buttons button {
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    background: #2196f3;
+
+    color: white;
+
+    transition: .3s;
+
+}
+
+.water-buttons button:hover {
+
+    transform: translateY(-4px);
+
+}
+
+.water-tip {
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+    background: #eef8ff;
+
+    border-radius: 15px;
+
+}
+
+.water-status {
+
+    margin-top: 25px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: #0077ff;
+
+}
+
+.water-success {
+
+    margin-top: 30px;
+
+    padding: 30px;
+
+    background: linear-gradient(135deg, #d4fc79, #96e6a1);
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+
+}
+
+.water-success h2 {
+
+    margin-bottom: 15px;
+
+    color: #166534;
+
+}
+
+.water-success p {
+
+    margin: 8px 0;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+}

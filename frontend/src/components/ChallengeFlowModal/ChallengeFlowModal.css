@@ -1,0 +1,107 @@
+.challenge-modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation:fadeIn .25s ease;
+}
+
+.challenge-modal{
+    width:420px;
+    max-width:90%;
+    background:#fff;
+    border-radius:18px;
+    padding:35px 30px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    animation:popup .3s ease;
+}
+
+.challenge-modal-close{
+    position:absolute;
+    right:15px;
+    top:12px;
+    border:none;
+    background:none;
+    font-size:28px;
+    cursor:pointer;
+    color:#666;
+}
+
+.challenge-modal-icon{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.challenge-modal h2{
+    color:#16a34a;
+    margin-bottom:12px;
+}
+
+.challenge-modal p{
+    color:#555;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.challenge-modal-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.challenge-primary-btn{
+    background:#16a34a;
+    color:#fff;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.challenge-primary-btn:hover{
+    background:#15803d;
+    transform:translateY(-2px);
+}
+
+.challenge-secondary-btn{
+    background:#e5e7eb;
+    color:#111827;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.challenge-secondary-btn:hover{
+    background:#d1d5db;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}

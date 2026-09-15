@@ -1,0 +1,1161 @@
+/* =========================================================
+   EXERCISE PAGE LAYOUT
+   ========================================================= */
+
+.exercise-page {
+  min-height: calc(100vh - 120px);
+  padding: 1.5rem 1rem 3rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(34, 197, 94, 0.06),
+      rgba(15, 23, 42, 0.02)
+    );
+}
+
+.exercise-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.exercise-header {
+  margin-bottom: 1.25rem;
+}
+
+.exercise-eyebrow {
+  margin: 0 0 0.35rem;
+
+  color: #16a34a;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.exercise-header h1 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 2.35rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.exercise-subtitle {
+  margin: 0.45rem 0 0;
+
+  color: #64748b;
+
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   EXERCISE STAT CARDS
+   ========================================================= */
+
+.exercise-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 1rem;
+
+  margin: 1.25rem 0;
+}
+
+.exercise-stat-card {
+  padding: 1.15rem 1.2rem;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 22px rgba(15, 23, 42, 0.05);
+}
+
+.exercise-stat-label {
+  display: block;
+
+  margin-bottom: 0.35rem;
+
+  color: #64748b;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.exercise-stat-value {
+  display: block;
+
+  color: #0f172a;
+
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   GENERATE AREA
+   ========================================================= */
+
+.exercise-generate-area {
+  display: flex;
+
+  justify-content: center;
+
+  margin: 1.25rem 0 1.4rem;
+}
+
+.exercise-complete-btn {
+  background: #22c55e;
+  color: white;
+
+  border: none;
+
+  padding: 14px 28px;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.exercise-complete-btn:hover {
+  background: #15803d;
+}
+
+.exercise-complete-btn:disabled {
+  background: #9ca3af;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.exercise-message {
+  margin-bottom: 1rem;
+
+  padding: 0.85rem 1rem;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+}
+
+.exercise-message--success {
+  background: rgba(34, 197, 94, 0.12);
+
+  color: #166534;
+}
+
+.exercise-message--info {
+  background: rgba(59, 130, 246, 0.12);
+
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   EXERCISE GRID
+   ========================================================= */
+
+.exercise-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 1.25rem;
+
+  margin-top: 1rem;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   FREE EXERCISE CARDS
+   IMPORTANT:
+   ONLY FREE VERSION.
+   PREMIUM IS NOT AFFECTED.
+   ========================================================= */
+
+.exercise-card--free {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 365px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #dcefe3;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 24px rgba(22, 163, 74, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* =========================================================
+   FREE CARD GREEN TOP LINE
+   ========================================================= */
+
+.exercise-card--free::before {
+  content: "";
+
+  display: block;
+
+  width: 100%;
+  height: 5px;
+
+  flex-shrink: 0;
+
+  background: linear-gradient(
+    90deg,
+    #16a34a,
+    #22c55e,
+    #4ade80
+  );
+}
+
+
+/* =========================================================
+   FREE CARD HOVER
+   ========================================================= */
+
+.exercise-card--free:hover {
+  transform: translateY(-5px);
+
+  border-color: #86efac;
+
+  box-shadow:
+    0 16px 35px rgba(22, 163, 74, 0.14);
+}
+
+
+/* =========================================================
+   FREE CARD CONTENT
+   ========================================================= */
+
+.free-exercise-content {
+  display: flex;
+
+  flex-direction: column;
+
+  flex: 1;
+
+  padding: 20px;
+}
+
+
+/* =========================================================
+   FREE CARD HEADER
+   CATEGORY + DIFFICULTY
+   ========================================================= */
+
+.free-card-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   FREE CATEGORY BADGE
+   ========================================================= */
+
+.free-exercise-category {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 6px 11px;
+
+  background: #ecfdf3;
+
+  color: #15803d;
+
+  border: 1px solid #bbf7d0;
+
+  border-radius: 999px;
+
+  font-size: 0.74rem;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FREE DIFFICULTY BADGE
+   ========================================================= */
+
+.free-exercise-difficulty {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 6px 11px;
+
+  background: #f0fdf4;
+
+  color: #166534;
+
+  border: 1px solid #dcfce7;
+
+  border-radius: 999px;
+
+  font-size: 0.74rem;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FREE EXERCISE NAME
+   ========================================================= */
+
+.free-exercise-name {
+  margin: 0 0 8px;
+
+  color: #0f172a;
+
+  font-size: 1.35rem;
+
+  font-weight: 800;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   FREE DESCRIPTION
+   ========================================================= */
+
+.free-exercise-description {
+  margin: 0 0 18px;
+
+  color: #64748b;
+
+  font-size: 0.92rem;
+
+  line-height: 1.55;
+
+  min-height: 45px;
+}
+
+
+/* =========================================================
+   FREE DETAILS
+   ========================================================= */
+
+.free-exercise-details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   FREE DETAIL BOX
+   ========================================================= */
+
+.free-detail {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 0;
+
+  padding: 11px 12px;
+
+  background: #f8fcf9;
+
+  border: 1px solid #e5f2e9;
+
+  border-radius: 12px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FREE DETAIL ICON
+   ========================================================= */
+
+.free-detail > span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  background: #ecfdf3;
+
+  border-radius: 8px;
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   FREE DETAIL TEXT
+   ========================================================= */
+
+.free-detail > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   FREE DETAIL LABEL
+   ========================================================= */
+
+.free-detail small {
+  color: #64748b;
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   FREE DETAIL VALUE
+   ========================================================= */
+
+.free-detail strong {
+  color: #166534;
+
+  font-size: 0.9rem;
+
+  font-weight: 800;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FREE GOAL
+   ========================================================= */
+
+.free-exercise-goal {
+  margin-top: auto;
+
+  padding: 12px 14px;
+
+  background: #f0fdf4;
+
+  border: 1px solid #bbf7d0;
+
+  border-left: 4px solid #22c55e;
+
+  border-radius: 11px;
+
+  color: #475569;
+
+  font-size: 0.88rem;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   FREE GOAL STRONG TEXT
+   ========================================================= */
+
+.free-exercise-goal strong {
+  color: #15803d;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   FREE CARD HOVER DETAILS
+   ========================================================= */
+
+.exercise-card--free:hover .free-detail {
+  border-color: #ccebd7;
+
+  background: #f5fcf7;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.exercise-state {
+  width: 70rem;
+  max-width: 70rem;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+
+  padding: 3rem 1.5rem;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  align-items: center;
+
+  color: #334155;
+
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.exercise-state h2 {
+  margin: 0 0 0.5rem;
+
+  font-size: 2.1rem;
+}
+
+.exercise-state h3 {
+  margin: 0 0 0.4rem;
+
+  color: #0f172a;
+
+  font-size: 1.3rem;
+
+  font-weight: 800;
+}
+
+.exercise-state p {
+  margin: 0;
+
+  color: #64748b;
+
+  line-height: 1.6;
+}
+
+.exercise-state--error {
+  color: #b91c1c;
+}
+
+
+/* =========================================================
+   WORKOUT SUMMARY
+   ========================================================= */
+
+.exercise-summary {
+  margin-top: 1.4rem;
+
+  padding: 1.2rem;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.exercise-summary h3 {
+  margin: 0;
+
+  color: #0f172a;
+}
+
+.exercise-summary__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 0.8rem;
+
+  margin-top: 0.8rem;
+}
+
+.exercise-summary__grid div {
+  padding: 0.8rem;
+
+  background: #f8fafc;
+
+  border-radius: 12px;
+}
+
+.exercise-summary__grid span {
+  display: block;
+
+  margin-bottom: 0.2rem;
+
+  color: #64748b;
+
+  font-size: 0.82rem;
+}
+
+.exercise-summary__grid strong {
+  color: #0f172a;
+}
+
+
+/* =========================================================
+   PREMIUM EXERCISE CARDS
+   IMPORTANT:
+   PREMIUM DESIGN KEPT AS YOUR CURRENT VERSION.
+   ========================================================= */
+
+
+/* Main premium card */
+
+.exercise-card--premium {
+  background: #ffffff;
+
+  border: 2px solid #facc15;
+
+  border-radius: 20px;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 24px rgba(245, 158, 11, 0.16);
+
+  display: flex;
+
+  flex-direction: column;
+
+  height: 100%;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Premium card hover */
+
+.exercise-card--premium:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 14px 32px rgba(245, 158, 11, 0.22);
+}
+
+
+/* =========================================================
+   PREMIUM TOP GOLD STRIP
+   ========================================================= */
+
+.exercise-card--premium::before {
+  content: "";
+
+  display: block;
+
+  width: 100%;
+
+  height: 6px;
+
+  background: linear-gradient(
+    90deg,
+    #f59e0b,
+    #facc15,
+    #f59e0b
+  );
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PREMIUM CARD CONTENT
+   ========================================================= */
+
+.premium-exercise-content {
+  display: flex;
+
+  flex-direction: column;
+
+  flex: 1;
+
+  padding: 1.25rem;
+}
+
+
+/* =========================================================
+   PREMIUM CARD TOP
+   ========================================================= */
+
+.premium-exercise-content .exercise-card__top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
+  margin-bottom: 0.9rem;
+}
+
+
+/* =========================================================
+   PREMIUM CATEGORY BADGE
+   ========================================================= */
+
+.premium-exercise-content
+.exercise-card__badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 0.38rem 0.72rem;
+
+  background: #dcfce7;
+
+  color: #15803d;
+
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   PREMIUM DIFFICULTY BADGE
+   ========================================================= */
+
+.premium-exercise-content
+.exercise-card__badge--secondary {
+  background: #eff6ff;
+
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   PREMIUM EXERCISE NAME
+   ========================================================= */
+
+.premium-exercise-content h3 {
+  margin: 0 0 0.6rem;
+
+  color: #0f172a;
+
+  font-size: 1.35rem;
+
+  line-height: 1.3;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   PREMIUM DESCRIPTION
+   ========================================================= */
+
+.premium-exercise-content > p {
+  margin: 0 0 1rem;
+
+  color: #475569;
+
+  font-size: 0.94rem;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   PREMIUM DETAILS GRID
+   ========================================================= */
+
+.premium-exercise-content
+.exercise-card__details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 0.75rem;
+
+  margin: 0.6rem 0 1rem;
+}
+
+
+/* =========================================================
+   PREMIUM DETAIL BOX
+   ========================================================= */
+
+.premium-exercise-content
+.exercise-card__details div {
+  min-width: 0;
+
+  padding: 0.8rem;
+
+  background: #f8fafc;
+
+  border: 1px solid #e8edf2;
+
+  border-radius: 12px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PREMIUM DETAIL LABEL
+   ========================================================= */
+
+.premium-exercise-content
+.exercise-card__details span {
+  display: block;
+
+  margin-bottom: 0.25rem;
+
+  color: #64748b;
+
+  font-size: 0.76rem;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   PREMIUM DETAIL VALUE
+   ========================================================= */
+
+.premium-exercise-content
+.exercise-card__details strong {
+  display: block;
+
+  color: #0f172a;
+
+  font-size: 0.95rem;
+
+  line-height: 1.35;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   PREMIUM TRAINER INSTRUCTIONS
+   ========================================================= */
+
+.premium-exercise-content .trainer-box {
+  margin-top: auto;
+
+  padding: 1rem 1.05rem;
+
+  background: #fff8dc;
+
+  border-left: 5px solid #f59e0b;
+
+  border-radius: 12px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TRAINER TITLE
+   ========================================================= */
+
+.premium-exercise-content
+.trainer-box h4 {
+  margin: 0 0 0.55rem;
+
+  color: #b45309;
+
+  font-size: 1rem;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   TRAINER INSTRUCTION TEXT
+   ========================================================= */
+
+.premium-exercise-content
+.trainer-box p {
+  margin: 0;
+
+  color: #57534e;
+
+  font-size: 0.9rem;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   PREMIUM CARD - TABLET
+   ========================================================= */
+
+@media (max-width: 960px) {
+
+  .premium-exercise-content
+  .exercise-card__details {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   PREMIUM CARD - MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .premium-exercise-content {
+    padding: 1rem;
+  }
+
+  .premium-exercise-content
+  .exercise-card__top {
+    align-items: flex-start;
+  }
+
+  .premium-exercise-content
+  .exercise-card__details {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 960px) {
+
+  .exercise-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .exercise-stats {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .exercise-summary__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   FREE CARD - TABLET
+   ========================================================= */
+
+@media (max-width: 960px) {
+
+  .exercise-card--free {
+    min-height: 360px;
+  }
+
+  .free-exercise-content {
+    padding: 18px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .exercise-page {
+    padding:
+      1rem 0.75rem 2rem;
+  }
+
+  .exercise-header h1 {
+    font-size: 2rem;
+  }
+
+  .exercise-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-summary__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-generate-area {
+    width: 100%;
+  }
+
+  .exercise-complete-btn {
+    width: 100%;
+  }
+
+
+  /* =======================================================
+     FREE CARD MOBILE
+     ======================================================= */
+
+  .exercise-card--free {
+    min-height: auto;
+
+    border-radius: 17px;
+  }
+
+  .free-exercise-content {
+    padding: 16px;
+  }
+
+  .free-card-header {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+  }
+
+  .free-exercise-name {
+    font-size: 1.2rem;
+  }
+
+  .free-exercise-description {
+    min-height: auto;
+
+    font-size: 0.9rem;
+  }
+
+  .free-exercise-details {
+    grid-template-columns: 1fr;
+  }
+
+  .free-detail {
+    padding: 10px 11px;
+  }
+
+  .free-exercise-goal {
+    font-size: 0.84rem;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .free-card-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .free-exercise-category,
+  .free-exercise-difficulty {
+    font-size: 0.7rem;
+  }
+
+  .free-exercise-name {
+    font-size: 1.1rem;
+  }
+
+}

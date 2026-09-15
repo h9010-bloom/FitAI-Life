@@ -1,0 +1,252 @@
+:root {
+  --green-600: #16a34a;
+  --green-500: #22c55e;
+  --dark-900: #0f172a;
+  --dark-700: #334155;
+  --light-50: #f8fafc;
+  --white: #ffffff;
+  --border: #e2e8f0;
+}
+
+.checkin-page {
+  min-height: calc(100vh - 120px);
+  padding: 2rem 1rem 3rem;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(15, 23, 42, 0.02));
+}
+
+.checkin-shell {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.checkin-header {
+  margin-bottom: 1.2rem;
+}
+
+.checkin-eyebrow {
+  margin: 0 0 0.3rem;
+  color: var(--green-600);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+}
+
+.checkin-header h1,
+.checkin-card h2,
+.checkin-card h3 {
+  margin: 0;
+  color: var(--dark-900);
+}
+
+.checkin-subtitle {
+  margin: 0.45rem 0 0;
+  color: var(--dark-700);
+}
+
+.checkin-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.checkin-card--hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkin-date {
+  color: var(--green-600);
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+
+.checkin-streak {
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  text-align: center;
+}
+
+.checkin-streak span {
+  display: block;
+  color: var(--dark-700);
+  font-size: 0.8rem;
+}
+
+.checkin-streak strong {
+  color: var(--green-600);
+  font-size: 1.1rem;
+}
+
+.checkin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.checkin-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.45rem;
+}
+
+.checkin-card p {
+  margin: 0;
+  color: var(--dark-700);
+}
+
+.checkin-btn {
+  border: none;
+  background: var(--green-600);
+  color: var(--white);
+  padding: 0.7rem 0.95rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.checkin-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.checkin-card--state {
+  text-align: center;
+}
+
+.checkin-card--error {
+  color: #b91c1c;
+}
+
+@media (max-width: 720px) {
+  .checkin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .checkin-card--hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Progress Card */
+
+.checkin-progress-card {
+  margin: 1rem 0;
+}
+
+.checkin-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.checkin-progress-header h3 {
+  margin: 0;
+}
+
+.checkin-progress-header span {
+  font-weight: bold;
+  color: var(--green-600);
+}
+
+.checkin-progress-bar {
+  width: 100%;
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.checkin-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.5s ease;
+}
+
+/* Summary Cards */
+
+.checkin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.summary-card h4 {
+  margin: 0;
+  color: #555;
+}
+
+.summary-card h2 {
+  margin-top: .6rem;
+  color: var(--green-600);
+}
+
+/* Motivation */
+
+.motivation-card {
+  margin-top: 1.2rem;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  color: white;
+  border-radius: 18px;
+  padding: 1.3rem;
+}
+
+.motivation-card h3 {
+  color: white;
+  margin-top: 0;
+}
+
+.motivation-card p {
+  color: white;
+}
+
+/* Remaining Tasks */
+
+.remaining-list {
+  margin-top: .8rem;
+  padding-left: 20px;
+}
+
+.remaining-list li {
+  margin-bottom: .4rem;
+}
+
+/* Completed Card */
+
+.completed-card {
+  border: 2px solid #22c55e;
+  background: #f0fdf4;
+}
+
+.completed-card button {
+  background: #15803d;
+}
+
+
+/* Mobile*/
+@media (max-width:768px){
+
+  .checkin-summary-grid{
+      grid-template-columns:1fr;
+  }
+
+}

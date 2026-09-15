@@ -1,0 +1,97 @@
+.premium-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 1300;
+}
+
+.premium-modal {
+  width: min(100%, 520px);
+  background: #ffffff;
+  border-radius: 1.2rem;
+  padding: 1.4rem;
+  position: relative;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
+}
+
+.premium-modal__close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.9rem;
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #334155;
+}
+
+.premium-modal__title {
+  margin: 0 0 0.6rem;
+  color: #0f172a;
+}
+
+.premium-modal__text {
+  margin: 0 0 1rem;
+  color: #334155;
+}
+
+.premium-modal__benefits {
+  background: #f8fafc;
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.premium-modal__benefits p {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.premium-modal__benefits ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: #334155;
+}
+
+.premium-modal__price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+  color: #0f172a;
+}
+
+.premium-modal__offer {
+  margin: 0 0 1rem;
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.premium-modal__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.premium-modal__button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.premium-modal__button--primary {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ffffff;
+}
+
+.premium-modal__button--secondary {
+  background: #f8fafc;
+  color: #0f172a;
+}

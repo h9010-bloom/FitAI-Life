@@ -1,0 +1,251 @@
+:root {
+  --green-600: #16a34a;
+  --green-500: #22c55e;
+  --green-100: #dcfce7;
+  --dark-900: #0f172a;
+  --dark-700: #334155;
+  --light-50: #f8fafc;
+  --white: #ffffff;
+  --border: #e2e8f0;
+}
+
+.navbar-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+.navbar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.95rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.16rem;
+  font-weight: 800;
+  color: var(--dark-900);
+  letter-spacing: -0.02em;
+}
+
+.navbar__logo-icon {
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-600), var(--green-500));
+  color: var(--white);
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.25);
+}
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.24rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.navbar__hamburger span {
+  width: 1.45rem;
+  height: 2px;
+  background: var(--dark-900);
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.navbar__link {
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--dark-700);
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.navbar__link:hover,
+.navbar__link.active {
+  color: var(--white);
+  background: linear-gradient(135deg, var(--green-600), var(--green-500));
+  transform: translateY(-1px);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  position: relative;
+}
+
+.navbar__profile {
+  position: relative;
+}
+
+.navbar__profile-toggle,
+.navbar__logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 0.9rem;
+  background: var(--light-50);
+  color: var(--dark-900);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.navbar__profile-toggle:hover,
+.navbar__logout-btn:hover {
+  background: var(--green-100);
+  color: var(--green-600);
+  transform: translateY(-1px);
+}
+
+.navbar__avatar {
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-600), var(--green-500));
+  color: var(--white);
+  font-size: 0.85rem;
+}
+
+.navbar__profile-menu {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 12rem;
+  padding: 0.45rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.navbar__menu-item {
+  border: none;
+  text-align: left;
+  padding: 0.7rem 0.8rem;
+  background: transparent;
+  color: var(--dark-700);
+  text-decoration: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navbar__menu-item:hover {
+  background: var(--green-100);
+  color: var(--green-600);
+}
+
+@media (max-width: 960px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .navbar__links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 0 0.2rem;
+  }
+
+  .navbar__links.open {
+    display: flex;
+  }
+
+  .navbar__link {
+    width: 100%;
+  }
+}
+
+.navbar__login-btn,
+.navbar__register-btn{
+    padding:10px 22px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.navbar__login-btn{
+    border:2px solid #16a34a;
+    color:#16a34a;
+    background:white;
+}
+
+.navbar__login-btn:hover{
+    background:#16a34a;
+    color:white;
+}
+
+.navbar__register-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.navbar__register-btn:hover{
+    background:#15803d;
+}
+
+.navbar__actions{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0.85rem 1rem;
+  }
+
+  .navbar__actions {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+  }
+
+  .navbar__logout-btn {
+    display: none;
+  }
+}

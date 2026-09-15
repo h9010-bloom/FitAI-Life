@@ -1,0 +1,194 @@
+/* ==========================
+   HELP PAGE
+========================== */
+
+.help-page {
+    width: 100%;
+    background: #f7f9fc;
+    color: #333;
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+
+.help-hero {
+    background: linear-gradient(135deg, #2e8b57, #3cb371);
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.help-hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.help-hero p {
+    max-width: 850px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+/* ==========================
+   COMMON SECTION
+========================== */
+
+.help-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+}
+
+.help-section h2 {
+    text-align: center;
+    color: #2e8b57;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* ==========================
+   FAQ
+========================== */
+
+.faq-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 25px;
+}
+
+.faq-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    transition: .3s;
+}
+
+.faq-card:hover {
+    transform: translateY(-5px);
+}
+
+.faq-card h3 {
+    color: #2e8b57;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.faq-card p {
+    line-height: 1.7;
+    color: #555;
+}
+
+/* ==========================
+   PROJECT CARD
+========================== */
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    padding: 35px;
+}
+
+.project-item {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 18px 0;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-item strong {
+    color: #2e8b57;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.project-item p {
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ==========================
+   AI HELP
+========================== */
+
+.ai-help-card {
+    background: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+.ai-help-card h3 {
+    color: #2e8b57;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.ai-help-card p {
+    line-height: 1.8;
+    color: #555;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.help-footer {
+    text-align:center;
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    color:white;
+    border-radius:20px;
+    padding:60px 25px;
+}
+
+.help-footer h2 {
+    margin-bottom: 20px;
+    font-size: 34px;
+}
+
+.help-footer p {
+    max-width: 850px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 768px) {
+
+    .help-hero {
+        padding: 50px 20px;
+    }
+
+    .help-hero h1 {
+        font-size: 32px;
+    }
+
+    .help-section h2 {
+        font-size: 28px;
+    }
+
+    .faq-container {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 25px;
+    }
+
+    .ai-help-card {
+        padding: 25px;
+    }
+
+}

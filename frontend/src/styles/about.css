@@ -1,0 +1,209 @@
+/* =====================================
+   ABOUT PAGE
+===================================== */
+
+.about-page{
+    background:#f4faf6;
+    min-height:100vh;
+    padding-bottom:60px;
+    color:#1f2937;
+}
+
+/* =====================================
+   HERO SECTION
+===================================== */
+
+.about-hero{
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    color:white;
+    text-align:center;
+    padding:90px 20px;
+}
+
+.about-hero h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    font-weight:700;
+}
+
+.about-hero p{
+    font-size:1.3rem;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* =====================================
+   COMMON SECTION
+===================================== */
+
+.about-section,
+.vision-section,
+.cta-section{
+    max-width:1200px;
+    margin:70px auto;
+    padding:0 25px;
+}
+
+.about-section h2,
+.vision-section h2,
+.cta-section h2{
+    text-align:center;
+    color:#15803d;
+    font-size:2.2rem;
+    margin-bottom:25px;
+}
+
+.about-section>p,
+.vision-section p,
+.cta-section p{
+    text-align:center;
+    max-width:850px;
+    margin:auto;
+    line-height:1.9;
+    color:#555;
+    font-size:1.05rem;
+}
+
+/* =====================================
+   BENEFITS
+===================================== */
+
+.benefits-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+    margin-top:45px;
+}
+
+.benefit-card{
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.benefit-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(22,163,74,.18);
+}
+
+.benefit-card span{
+    font-size:48px;
+}
+
+.benefit-card h3{
+    margin:18px 0;
+    color:#15803d;
+}
+
+.benefit-card p{
+    color:#666;
+    line-height:1.7;
+}
+
+/* =====================================
+   FEATURES
+===================================== */
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:45px;
+}
+
+.feature-card{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.feature-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(22,163,74,.18);
+}
+
+.feature-icon{
+    font-size:50px;
+    margin-bottom:18px;
+}
+
+.feature-card h3{
+    color:#15803d;
+    margin-bottom:15px;
+}
+
+.feature-card p{
+    color:#666;
+    line-height:1.7;
+}
+
+/* =====================================
+   VISION
+===================================== */
+
+.vision-section{
+    background:white;
+    border-radius:20px;
+    padding:55px 30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* =====================================
+   CTA
+===================================== */
+
+.cta-section{
+    text-align:center;
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    color:white;
+    border-radius:20px;
+    padding:60px 25px;
+}
+
+.cta-section h2{
+    color:white;
+}
+
+.cta-section p{
+    color:white;
+    max-width:700px;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:768px){
+
+.about-hero{
+    padding:70px 20px;
+}
+
+.about-hero h1{
+    font-size:2.2rem;
+}
+
+.about-hero p{
+    font-size:1rem;
+}
+
+.about-section h2,
+.vision-section h2,
+.cta-section h2{
+    font-size:1.8rem;
+}
+
+.benefits-grid,
+.features-grid,
+.tech-grid{
+    grid-template-columns:1fr;
+}
+
+}

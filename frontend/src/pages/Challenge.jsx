@@ -66,7 +66,7 @@ const Challenge = () => {
 
   const handleContinue = async () => {
     try {
-      await api.post('/membership/save', {
+      await api.post('/api/membership/save', {
         membershipType,
         challengePlan: selectedPlan,
       });

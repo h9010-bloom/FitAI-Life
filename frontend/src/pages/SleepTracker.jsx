@@ -15,7 +15,7 @@ const SleepTracker = () => {
     const fetchSleep = async () => {
 
         const res = await axios.get(
-            "http://localhost:5000/api/sleep",
+            "https://fitai-life-backend.onrender.com/api/sleep",
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -34,7 +34,7 @@ const SleepTracker = () => {
     const saveSleep = async () => {
 
         await axios.post(
-            "http://localhost:5000/api/sleep/save",
+            "https://fitai-life-backend.onrender.com/api/sleep/save",
             {
                 bedTime,
                 wakeTime,

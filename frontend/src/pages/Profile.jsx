@@ -72,7 +72,7 @@ const Profile = () => {
   const getImageUrl = (image) => {
     if (!image) return '';
     if (/^https?:\/\//i.test(image)) return image;
-    const baseUrl = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace(/\/api$/, '');
+    const baseUrl = (import.meta.env.VITE_API_URL || 'https://fitai-life-backend.onrender.com/api').replace(/\/api$/, '');
     return `${baseUrl}${image}`;
   };
 

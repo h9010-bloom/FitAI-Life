@@ -41,7 +41,7 @@ const Exercise = () => {
       try {
         // Get User Profile
         const profileRes = await axios.get(
-          "http://localhost:5000/api/profile",
+          "https://fitai-life-backend.onrender.com/api/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ const Exercise = () => {
 
         // Get Exercises Based on Goal
         const exerciseRes = await axios.get(
-          `http://localhost:5000/api/exercises/goal/${encodeURIComponent(
+          `https://fitai-life-backend.onrender.com/api/exercises/goal/${encodeURIComponent(
             user.goal
           )}`
         );
@@ -85,7 +85,7 @@ const Exercise = () => {
   const resetTodayWorkout = async () => {
     try {
       await axios.put(
-        "http://localhost:5000/api/exercises/reset-today",
+        "https://fitai-life-backend.onrender.com/api/exercises/reset-today",
         {},
         {
           headers: {
@@ -120,7 +120,7 @@ const Exercise = () => {
     try {
 
       const response = await axios.get(
-        "http://localhost:5000/api/exercises/today",
+        "https://fitai-life-backend.onrender.com/api/exercises/today",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -375,7 +375,7 @@ const Exercise = () => {
       setIsCompleting(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/profile/workout-complete",
+        "https://fitai-life-backend.onrender.com/api/profile/workout-complete",
         {},
         {
           headers: {

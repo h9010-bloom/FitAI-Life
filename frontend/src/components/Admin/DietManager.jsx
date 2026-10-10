@@ -20,7 +20,7 @@ const DietManager = () => {
 
   const fetchDiets = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/diets");
+      const res = await axios.get("https://fitai-life-backend.onrender.com/api/diets");
       setDiets(res.data);
     } catch (err) {
       console.log(err);
@@ -57,7 +57,7 @@ const DietManager = () => {
   const addDiet = async (e) => {
     e.preventDefault();
 
-    await axios.post("http://localhost:5000/api/diets", formData);
+    await axios.post("https://fitai-life-backend.onrender.com/api/diets", formData);
 
     alert("Diet added successfully.");
 
@@ -69,7 +69,7 @@ const DietManager = () => {
     e.preventDefault();
 
     await axios.put(
-      `http://localhost:5000/api/diets/${editingId}`,
+      `https://fitai-life-backend.onrender.com/api/diets/${editingId}`,
       formData
     );
 
@@ -82,7 +82,7 @@ const DietManager = () => {
   const deleteDiet = async (id) => {
     if (!window.confirm("Delete this diet?")) return;
 
-    await axios.delete(`http://localhost:5000/api/diets/${id}`);
+    await axios.delete(`https://fitai-life-backend.onrender.com/api/diets/${id}`);
 
     fetchDiets();
   };

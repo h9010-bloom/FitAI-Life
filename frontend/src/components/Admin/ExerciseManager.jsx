@@ -25,7 +25,7 @@ const ExerciseManager = () => {
 
   const fetchExercises = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/exercises");
+      const res = await axios.get("https://fitai-life-backend.onrender.com/api/exercises");
       setExercises(res.data);
     } catch (err) {
       console.log(err);
@@ -69,7 +69,7 @@ const ExerciseManager = () => {
     e.preventDefault();
 
     await axios.post(
-      "http://localhost:5000/api/exercises",
+      "https://fitai-life-backend.onrender.com/api/exercises",
       formData
     );
 
@@ -83,7 +83,7 @@ const ExerciseManager = () => {
     e.preventDefault();
 
     await axios.put(
-      `http://localhost:5000/api/exercises/${editingId}`,
+      `https://fitai-life-backend.onrender.com/api/exercises/${editingId}`,
       formData
     );
 
@@ -97,7 +97,7 @@ const ExerciseManager = () => {
     if (!window.confirm("Delete this exercise?")) return;
 
     await axios.delete(
-      `http://localhost:5000/api/exercises/${id}`
+      `https://fitai-life-backend.onrender.com/api/exercises/${id}`
     );
 
     fetchExercises();

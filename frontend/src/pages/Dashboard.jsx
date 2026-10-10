@@ -76,7 +76,7 @@ const Dashboard = () => {
         // -------------------------
 
         const profileResponse = await axios.get(
-          "http://localhost:5000/api/profile",
+          "https://fitai-life-backend.onrender.com/api/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -115,7 +115,7 @@ const Dashboard = () => {
         // -------------------------
 
         const membershipResponse = await axios.get(
-          "http://localhost:5000/api/membership",
+          "https://fitai-life-backend.onrender.com/api/membership",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -130,7 +130,7 @@ const Dashboard = () => {
         // -------------------------
 
         const trialResponse = await axios.get(
-          "http://localhost:5000/api/membership/check-trial",
+          "https://fitai-life-backend.onrender.com/api/membership/check-trial",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -191,7 +191,7 @@ const Dashboard = () => {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        "http://localhost:5000/api/profile/premium-popup",
+        "https://fitai-life-backend.onrender.com/api/profile/premium-popup",
         {},
         {
           headers: {
@@ -667,7 +667,7 @@ const Dashboard = () => {
             const token = localStorage.getItem("token");
 
             await axios.put(
-              "http://localhost:5000/api/profile/premium-popup",
+              "https://fitai-life-backend.onrender.com/api/profile/premium-popup",
               {},
               {
                 headers: {

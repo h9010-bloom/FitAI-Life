@@ -10,7 +10,7 @@ const CheckInManager = () => {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/admin/checkins"
+        "https://fitai-life-backend.onrender.com/api/admin/checkins"
       );
 
       setUsers(res.data);

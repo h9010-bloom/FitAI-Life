@@ -50,7 +50,7 @@ const MealPlanner = () => {
   const fetchProfile = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/profile",
+        "https://fitai-life-backend.onrender.com/api/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ const MealPlanner = () => {
       const goal = normalizeGoal(profile.goal);
 
       const res = await axios.get(
-        `http://localhost:5000/api/diets/goal/${encodeURIComponent(goal)}`
+        `https://fitai-life-backend.onrender.com/api/diets/goal/${encodeURIComponent(goal)}`
       );
 
       setMeals(res.data);
@@ -170,7 +170,7 @@ const MealPlanner = () => {
       setIsCompleting(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/profile/meal-complete",
+        "https://fitai-life-backend.onrender.com/api/profile/meal-complete",
         {},
         {
           headers: {

@@ -94,7 +94,7 @@ const Diet = () => {
       try {
         // 1. Get User Profile
         const profileRes = await axios.get(
-          "http://localhost:5000/api/profile",
+          "https://fitai-life-backend.onrender.com/api/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -167,7 +167,7 @@ const Diet = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/diets/today?t=${Date.now()}`,
+        `https://fitai-life-backend.onrender.com/api/diets/today?t=${Date.now()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -245,7 +245,7 @@ const Diet = () => {
       setIsCompleting(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/profile/meal-complete",
+        "https://fitai-life-backend.onrender.com/api/profile/meal-complete",
         {},
         {
           headers: {

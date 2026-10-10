@@ -76,7 +76,7 @@ const Register = () => {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/auth/register',
+        'https://fitai-life-backend.onrender.com/api/auth/register',
         {
           name: formData.name,
           email: formData.email,

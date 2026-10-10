@@ -11,7 +11,7 @@ const WaterTracker = () => {
     const fetchWater = async () => {
 
         const res = await axios.get(
-            "http://localhost:5000/api/water",
+            "https://fitai-life-backend.onrender.com/api/water",
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -32,7 +32,7 @@ const WaterTracker = () => {
     const addWater = async (amount) => {
 
         await axios.post(
-            "http://localhost:5000/api/water/add",
+            "https://fitai-life-backend.onrender.com/api/water/add",
             { amount },
             {
                 headers: {

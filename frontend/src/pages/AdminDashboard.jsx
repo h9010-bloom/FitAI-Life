@@ -68,7 +68,7 @@ const AdminDashboard = () => {
     const fetchUsers = async () => {
         try {
             setLoadingUsers(true);
-            const response = await axios.get("http://localhost:5000/api/users");
+            const response = await axios.get("https://fitai-life-backend.onrender.com/api/users");
             setUsers(response.data);
         } catch (error) {
             console.error("Error fetching users:", error);
@@ -79,7 +79,7 @@ const AdminDashboard = () => {
 
     const fetchDietCount = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/diets");
+            const response = await axios.get("https://fitai-life-backend.onrender.com/api/diets");
             setDietCount(response.data.length);
         } catch (error) {
             console.error("Error fetching diets:", error);
@@ -88,7 +88,7 @@ const AdminDashboard = () => {
 
     const fetchExerciseCount = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/exercises");
+            const response = await axios.get("https://fitai-life-backend.onrender.com/api/exercises");
             setExerciseCount(response.data.length);
         } catch (error) {
             console.error("Error fetching exercises:", error);
@@ -97,7 +97,7 @@ const AdminDashboard = () => {
 
     const fetchCheckInCount = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/admin/checkins");
+            const response = await axios.get("https://fitai-life-backend.onrender.com/api/admin/checkins");
             setCheckInCount(response.data.length);
         } catch (error) {
             console.error("Error fetching check-ins:", error);
@@ -110,7 +110,7 @@ const AdminDashboard = () => {
         if (!confirmDelete) return;
 
         try {
-            await axios.delete(`http://localhost:5000/api/users/${id}`);
+            await axios.delete(`https://fitai-life-backend.onrender.com/api/users/${id}`);
 
             fetchUsers();
             fetchDietCount();

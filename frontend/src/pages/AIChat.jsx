@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "../styles/aichat.css";
 
-const API = "http://localhost:5000/api/chat";
+const API = "https://fitai-life-backend.onrender.com/api/chat";
 
 function AIChat() {
   const [messages, setMessages] = useState([

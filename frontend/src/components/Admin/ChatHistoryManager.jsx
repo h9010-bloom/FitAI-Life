@@ -8,7 +8,7 @@ const ChatHistoryManager = () => {
   const fetchChats=async()=>{
     try{
       setLoading(true);
-      const res=await axios.get("http://localhost:5000/api/chat/admin/history");
+      const res=await axios.get("https://fitai-life-backend.onrender.com/api/chat/admin/history");
       setChats(res.data);
     }catch(err){
       console.error(err);
@@ -22,13 +22,13 @@ const ChatHistoryManager = () => {
 
   const deleteChat=async(id)=>{
     if(!window.confirm("Delete this chat?")) return;
-    await axios.delete(`http://localhost:5000/api/chat/admin/history/${id}`);
+    await axios.delete(`https://fitai-life-backend.onrender.com/api/chat/admin/history/${id}`);
     fetchChats();
   };
 
   const deleteAllChats=async()=>{
     if(!window.confirm("Delete ALL chat history?")) return;
-    await axios.delete("http://localhost:5000/api/chat/admin/history");
+    await axios.delete("https://fitai-life-backend.onrender.com/api/chat/admin/history");
     fetchChats();
   };
 

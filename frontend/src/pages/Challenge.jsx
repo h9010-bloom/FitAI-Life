@@ -130,5 +130,5 @@ const Challenge = () => {
       </main>
     );
   };
-
+}
   export default Challenge;

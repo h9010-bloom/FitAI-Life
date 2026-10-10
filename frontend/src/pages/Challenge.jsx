@@ -73,56 +73,62 @@ const Challenge = () => {
 
       navigate('/dashboard');
     } catch (error) {
-      alert(error.response?.data?.message || 'Unable to save membership. Please try again.');
+      console.error('Membership Save Error:', error);
+      console.error('Server Response:', error.response?.data);
+      console.error('Status Code:', error.response?.status);
+
+      alert(
+        error.response?.data?.message ||
+        `Request failed: ${error.response?.status || error.message}`
+      );
     }
+
+    return (
+      <main className="challenge-page">
+        <section className="challenge-card">
+          <p className="challenge-card__eyebrow">Fitness Challenge</p>
+
+          <h1 className="challenge-card__title">
+            {membershipType === 'Free'
+              ? 'Choose Your Free Fitness Challenge'
+              : 'Choose Your Premium Fitness Challenge'}
+          </h1>
+
+          <div className="challenge-list">
+            {challengeOptions.map((option) => (
+              <label key={option.value} className="challenge-option">
+                <input
+                  type="radio"
+                  name="challenge"
+                  value={option.value}
+                  checked={selectedPlan === option.value}
+                  onChange={(event) => setSelectedPlan(event.target.value)}
+                />
+                <span className="challenge-option__content">
+                  <span className="challenge-option__title">{option.title}</span>
+                  <span className="challenge-option__description">{option.description}</span>
+                </span>
+              </label>
+            ))}
+          </div>
+
+          <div className="challenge-summary">
+            <h2>Selected Plan</h2>
+            <p><strong>Duration:</strong> {selectedPlan}</p>
+            <p><strong>Membership Type:</strong> {membershipType}</p>
+          </div>
+
+          <div className="challenge-actions">
+            <button type="button" className="challenge-action challenge-action--back" onClick={handleBack}>
+              Back
+            </button>
+            <button type="button" className="challenge-action challenge-action--continue" onClick={handleContinue}>
+              Continue
+            </button>
+          </div>
+        </section>
+      </main>
+    );
   };
 
-  return (
-    <main className="challenge-page">
-      <section className="challenge-card">
-        <p className="challenge-card__eyebrow">Fitness Challenge</p>
-
-        <h1 className="challenge-card__title">
-          {membershipType === 'Free'
-            ? 'Choose Your Free Fitness Challenge'
-            : 'Choose Your Premium Fitness Challenge'}
-        </h1>
-
-        <div className="challenge-list">
-          {challengeOptions.map((option) => (
-            <label key={option.value} className="challenge-option">
-              <input
-                type="radio"
-                name="challenge"
-                value={option.value}
-                checked={selectedPlan === option.value}
-                onChange={(event) => setSelectedPlan(event.target.value)}
-              />
-              <span className="challenge-option__content">
-                <span className="challenge-option__title">{option.title}</span>
-                <span className="challenge-option__description">{option.description}</span>
-              </span>
-            </label>
-          ))}
-        </div>
-
-        <div className="challenge-summary">
-          <h2>Selected Plan</h2>
-          <p><strong>Duration:</strong> {selectedPlan}</p>
-          <p><strong>Membership Type:</strong> {membershipType}</p>
-        </div>
-
-        <div className="challenge-actions">
-          <button type="button" className="challenge-action challenge-action--back" onClick={handleBack}>
-            Back
-          </button>
-          <button type="button" className="challenge-action challenge-action--continue" onClick={handleContinue}>
-            Continue
-          </button>
-        </div>
-      </section>
-    </main>
-  );
-};
-
-export default Challenge;
+  export default Challenge;

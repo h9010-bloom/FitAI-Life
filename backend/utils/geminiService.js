@@ -7,9 +7,12 @@ const client = new OpenAI({
 
 const model = process.env.OPENROUTER_MODEL;
 
-
 async function generateResponse(prompt) {
   try {
+    if (!model) {
+      throw new Error("OPENROUTER_MODEL is missing.");
+    }
+
     const completion = await client.chat.completions.create({
       model,
       messages: [
@@ -27,48 +30,17 @@ async function generateResponse(prompt) {
       max_tokens: 600,
     });
 
-    console.log("Selected Model:", model);
-
-    console.log(
-      "Complete AI Response:",
-      JSON.stringify(completion.choices[0].message.content)
-    );
-
-    return completion.choices[0].message.content;
-
-    console.log(
-      "Selected Model:",
-      model
-    );
-
-    console.log(
-      "Complete AI Response:",
-      JSON.stringify(completion.choices[0].message.content)
-    );
-
-    const response =
-      completion?.choices?.[0]?.message?.content;
+    const response = completion?.choices?.[0]?.message?.content;
 
     if (!response || !response.trim()) {
       throw new Error("AI returned an empty response.");
     }
 
     return response.trim();
-
   } catch (error) {
     console.error("OpenRouter Error:", error.message);
-
-    if (error.response?.data) {
-      console.error(
-        "OpenRouter Details:",
-        error.response.data
-      );
-    }
-
     throw new Error("Failed to generate AI response.");
   }
 }
 
-module.exports = {
-  generateResponse,
-};
+module.exports = { generateResponse };

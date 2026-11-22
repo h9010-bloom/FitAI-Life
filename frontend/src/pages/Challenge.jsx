@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../services/api.js';
@@ -52,20 +53,28 @@ const premiumChallenges = [
 const Challenge = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
   const membershipType = location.state?.membershipType || 'Free';
 
   const [selectedPlan, setSelectedPlan] = useState(
-    membershipType === 'Free' ? freeChallenges[0].value : premiumChallenges[0].value
+    membershipType === 'Free'
+      ? freeChallenges[0].value
+      : premiumChallenges[0].value
   );
 
-  const challengeOptions = membershipType === 'Free' ? freeChallenges : premiumChallenges;
+  const [saving, setSaving] = useState(false);
 
-  const handleBack = () => {
-    navigate('/membership');
-  };
+  const challengeOptions =
+    membershipType === 'Free' ? freeChallenges : premiumChallenges;
+
+  const handleBack = () => navigate('/membership');
 
   const handleContinue = async () => {
+    if (saving) return;
+
     try {
+      setSaving(true);
+
       await api.post('/api/membership/save', {
         membershipType,
         challengePlan: selectedPlan,
@@ -74,61 +83,86 @@ const Challenge = () => {
       navigate('/dashboard');
     } catch (error) {
       console.error('Membership Save Error:', error);
-      console.error('Server Response:', error.response?.data);
-      console.error('Status Code:', error.response?.status);
 
       alert(
         error.response?.data?.message ||
-        `Request failed: ${error.response?.status || error.message}`
+        'Unable to save your challenge. Please try again.'
       );
+    } finally {
+      setSaving(false);
     }
-
-    return (
-      <main className="challenge-page">
-        <section className="challenge-card">
-          <p className="challenge-card__eyebrow">Fitness Challenge</p>
-
-          <h1 className="challenge-card__title">
-            {membershipType === 'Free'
-              ? 'Choose Your Free Fitness Challenge'
-              : 'Choose Your Premium Fitness Challenge'}
-          </h1>
-
-          <div className="challenge-list">
-            {challengeOptions.map((option) => (
-              <label key={option.value} className="challenge-option">
-                <input
-                  type="radio"
-                  name="challenge"
-                  value={option.value}
-                  checked={selectedPlan === option.value}
-                  onChange={(event) => setSelectedPlan(event.target.value)}
-                />
-                <span className="challenge-option__content">
-                  <span className="challenge-option__title">{option.title}</span>
-                  <span className="challenge-option__description">{option.description}</span>
-                </span>
-              </label>
-            ))}
-          </div>
-
-          <div className="challenge-summary">
-            <h2>Selected Plan</h2>
-            <p><strong>Duration:</strong> {selectedPlan}</p>
-            <p><strong>Membership Type:</strong> {membershipType}</p>
-          </div>
-
-          <div className="challenge-actions">
-            <button type="button" className="challenge-action challenge-action--back" onClick={handleBack}>
-              Back
-            </button>
-            <button type="button" className="challenge-action challenge-action--continue" onClick={handleContinue}>
-              Continue
-            </button>
-          </div>
-        </section>
-      </main>
-    );
   };
-}
-  export default Challenge;
+
+  return (
+    <main className="challenge-page">
+      <section className="challenge-card">
+        <p className="challenge-card__eyebrow">
+          Fitness Challenge
+        </p>
+
+        <h1 className="challenge-card__title">
+          {membershipType === 'Free'
+            ? 'Choose Your Free Fitness Challenge'
+            : 'Choose Your Premium Fitness Challenge'}
+        </h1>
+
+        <div className="challenge-list">
+          {challengeOptions.map((option) => (
+            <label
+              key={option.value}
+              className="challenge-option"
+            >
+              <input
+                type="radio"
+                name="challenge"
+                value={option.value}
+                checked={selectedPlan === option.value}
+                onChange={(event) =>
+                  setSelectedPlan(event.target.value)
+                }
+              />
+
+              <span className="challenge-option__content">
+                <span className="challenge-option__title">
+                  {option.title}
+                </span>
+
+                <span className="challenge-option__description">
+                  {option.description}
+                </span>
+              </span>
+            </label>
+          ))}
+        </div>
+
+        <div className="challenge-summary">
+          <h2>Selected Plan</h2>
+          <p><strong>Duration:</strong> {selectedPlan}</p>
+          <p><strong>Membership Type:</strong> {membershipType}</p>
+        </div>
+
+        <div className="challenge-actions">
+          <button
+            type="button"
+            className="challenge-action challenge-action--back"
+            onClick={handleBack}
+            disabled={saving}
+          >
+            Back
+          </button>
+
+          <button
+            type="button"
+            className="challenge-action challenge-action--continue"
+            onClick={handleContinue}
+            disabled={saving}
+          >
+            {saving ? 'Saving...' : 'Continue'}
+          </button>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+export default Challenge;

@@ -61,8 +61,8 @@ const Challenge = () => {
       ? freeChallenges[0].value
       : premiumChallenges[0].value
   );
-
   const [saving, setSaving] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const challengeOptions =
     membershipType === 'Free' ? freeChallenges : premiumChallenges;
@@ -72,21 +72,21 @@ const Challenge = () => {
   const handleContinue = async () => {
     if (saving) return;
 
-    try {
-      setSaving(true);
+    setSaving(true);
+    setErrorMessage('');
 
+    try {
       await api.post('/api/membership/save', {
         membershipType,
         challengePlan: selectedPlan,
       });
 
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     } catch (error) {
       console.error('Membership Save Error:', error);
-
-      alert(
+      setErrorMessage(
         error.response?.data?.message ||
-        'Unable to save your challenge. Please try again.'
+        'Unable to save your membership. Please try again.'
       );
     } finally {
       setSaving(false);
@@ -140,6 +140,12 @@ const Challenge = () => {
           <p><strong>Duration:</strong> {selectedPlan}</p>
           <p><strong>Membership Type:</strong> {membershipType}</p>
         </div>
+
+        {errorMessage && (
+          <p className="challenge-card__error" role="alert">
+            {errorMessage}
+          </p>
+        )}
 
         <div className="challenge-actions">
           <button

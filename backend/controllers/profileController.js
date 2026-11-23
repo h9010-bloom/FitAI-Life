@@ -72,9 +72,12 @@ const updateProfile = async (req, res) => {
 
     await user.save();
 
+    const safeUser = user.toObject();
+    delete safeUser.password;
+
     res.status(200).json({
       message: "Profile updated successfully",
-      user,
+      user: safeUser,
     });
   } catch (error) {
     console.error(error);
@@ -90,53 +93,10 @@ const updateProfile = async (req, res) => {
 // ==========================================
 
 const saveChallengeHistory = (user) => {
-  if (!hasMatchingHistory) {
-    user.challengeHistory = [
-      ...(user.challengeHistory || []),
-      historyItem,
-    ];
-
-    // ==========================
-    // Achievement Badges
-    // ==========================
-
-    if (!user.badges) {
-      user.badges = [];
-    }
-
-    if (!user.badges.includes("🥉 First Challenge")) {
-      user.badges.push("🥉 First Challenge");
-    }
-
-    if (user.totalChallengesCompleted >= 5 &&
-      !user.badges.includes("🥈 Consistency Master")) {
-      user.badges.push("🥈 Consistency Master");
-    }
-
-    if (user.totalChallengesCompleted >= 10 &&
-      !user.badges.includes("🥇 Fitness Champion")) {
-      user.badges.push("🥇 Fitness Champion");
-    }
-
-    if (
-      user.membershipType === "Premium" &&
-      !user.badges.includes("👑 Premium Member")
-    ) {
-      user.badges.push("👑 Premium Member");
-    }
-  }
-
-  // Lifetime completed challenges
-  user.totalChallengesCompleted =
-    (user.totalChallengesCompleted || 0) + 1;
-
-  const alreadyExists = user.challengeHistory.some((history) => {
-    return (
-      history.challengeName === user.challengePlan &&
-      new Date(history.startedAt).getTime() ===
-      new Date(user.challengeStartDate).getTime()
-    );
-  });
+  const alreadyExists = (user.challengeHistory || []).some((history) =>
+    history.challengeName === user.challengePlan &&
+    new Date(history.startedAt).getTime() === new Date(user.challengeStartDate).getTime()
+  );
 
   if (alreadyExists) {
     return;
@@ -151,6 +111,28 @@ const saveChallengeHistory = (user) => {
     completedAt: new Date(),
     status: "Completed",
   });
+
+  user.totalChallengesCompleted = (user.totalChallengesCompleted || 0) + 1;
+
+  if (!user.badges) {
+    user.badges = [];
+  }
+
+  if (!user.badges.includes("🥉 First Challenge")) {
+    user.badges.push("🥉 First Challenge");
+  }
+
+  if (user.totalChallengesCompleted >= 5 && !user.badges.includes("🥈 Consistency Master")) {
+    user.badges.push("🥈 Consistency Master");
+  }
+
+  if (user.totalChallengesCompleted >= 10 && !user.badges.includes("🥇 Fitness Champion")) {
+    user.badges.push("🥇 Fitness Champion");
+  }
+
+  if (user.membershipType === "Premium" && !user.badges.includes("👑 Premium Member")) {
+    user.badges.push("👑 Premium Member");
+  }
 };
 
 // ==========================================

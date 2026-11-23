@@ -33,6 +33,7 @@ const Router = () => (
     <Route path="/diet" element={<ProtectedRoute><Diet /></ProtectedRoute>} />
     <Route path="/progress" element={<ProtectedRoute><Progress /></ProtectedRoute>} />
     <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
+    <Route path="/ai-chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
     <Route path="/meal-planner" element={<ProtectedRoute><MealPlanner /></ProtectedRoute>} />
     <Route path="/workout-planner" element={<ProtectedRoute><WorkoutPlanner /></ProtectedRoute>} />
     <Route path="/daily-checkin" element={<ProtectedRoute><DailyCheckIn /></ProtectedRoute>} />

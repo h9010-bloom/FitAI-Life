@@ -21,6 +21,7 @@ const Profile = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [formData, setFormData] = useState(emptyForm);
+  const [profileImageFailed, setProfileImageFailed] = useState(false);
   const [passwordData, setPasswordData] = useState({ currentPassword: '', newPassword: '' });
   const [savingProfile, setSavingProfile] = useState(false);
   const [changingPassword, setChangingPassword] = useState(false);
@@ -29,9 +30,10 @@ const Profile = () => {
 
   const fetchProfile = async () => {
     try {
-      const response = await api.get('/profile');
+      const response = await api.get('/api/profile');
       const user = response.data.user || response.data;
       setProfile(user);
+      setProfileImageFailed(false);
       setFormData({
         name: user?.name || '',
         email: user?.email || '',
@@ -50,7 +52,7 @@ const Profile = () => {
 
   const fetchMembership = async () => {
     try {
-      const response = await api.get('/membership');
+      const response = await api.get('/api/membership');
       setMembership(response.data);
     } catch (error) {
       setMembership(null);
@@ -72,8 +74,7 @@ const Profile = () => {
   const getImageUrl = (image) => {
     if (!image) return '';
     if (/^https?:\/\//i.test(image)) return image;
-    const baseUrl = (import.meta.env.VITE_API_URL || 'https://fitai-life-backend.onrender.com/api').replace(/\/api$/, '');
-    return `${baseUrl}${image}`;
+    return `${api.defaults.baseURL}${image}`;
   };
 
   const initials = (profile?.name || 'U').split(' ').map((part) => part[0]).slice(0, 2).join('').toUpperCase();
@@ -175,7 +176,7 @@ const Profile = () => {
         goal: trimmedGoal,
       };
 
-      const response = await api.put('/profile', payload);
+      const response = await api.put('/api/profile', payload);
       const updatedUser = response.data.user || response.data;
       setProfile(updatedUser);
       setFormData({
@@ -193,7 +194,6 @@ const Profile = () => {
       setShowEditModal(false);
       setMessage('Profile updated successfully.');
       window.dispatchEvent(new Event('auth:update'));
-      await fetchProfile();
     } catch (err) {
       setError(err.response?.data?.message || 'Unable to update profile.');
     } finally {
@@ -207,7 +207,7 @@ const Profile = () => {
     setMessage('');
 
     try {
-      await api.put('/profile/change-password', passwordData);
+      await api.put('/api/profile/change-password', passwordData);
       setShowPasswordModal(false);
       setPasswordData({ currentPassword: '', newPassword: '' });
       setMessage('Password updated successfully.');
@@ -247,8 +247,12 @@ const Profile = () => {
         <div className="profile-card__hero">
           <div className="profile-card__avatar-wrap">
             <div className="profile-card__avatar">
-              {profile?.profileImage ? (
-                <img src={getImageUrl(profile.profileImage)} alt={profile.name || 'Profile'} />
+              {profile?.profileImage && !profileImageFailed ? (
+                <img
+                  src={getImageUrl(profile.profileImage)}
+                  alt={profile.name || 'Profile'}
+                  onError={() => setProfileImageFailed(true)}
+                />
               ) : (
                 <span>{initials}</span>
               )}
@@ -327,6 +331,16 @@ const Profile = () => {
                 <span className="profile-card__label">Goal</span>
                 <span>{profile?.goal || 'Not provided'}</span>
               </div>
+              <div className="profile-card__info">
+                <span className="profile-card__label">Food preference</span>
+                <span>
+                  {profile?.vegetarian === true
+                    ? 'Vegetarian'
+                    : profile?.vegetarian === false
+                      ? 'Non-vegetarian'
+                      : 'Not provided'}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -358,8 +372,13 @@ const Profile = () => {
           </div>
 
           <div className="profile-card__membership-badge-row">
-            <span className={`profile-card__badge ${membership?.membershipType === 'Premium Trial' ? 'profile-card__badge--premium' : 'profile-card__badge--free'}`}>
-              {membership?.membershipType === 'Premium Trial' ? '⭐ Premium' : 'Free'}
+            <span className={`profile-card__badge ${
+              (membership?.membershipType || profile?.membershipType) === 'Premium' ||
+              (membership?.membershipType || profile?.membershipType) === 'Premium Trial'
+                ? 'profile-card__badge--premium'
+                : 'profile-card__badge--free'
+            }`}>
+              {membership?.membershipType || profile?.membershipType || 'Free'}
             </span>
             <button type="button" className="profile-card__button profile-card__button--primary" onClick={() => navigate('/membership')}>
               Upgrade Membership
@@ -369,23 +388,23 @@ const Profile = () => {
           <div className="profile-card__membership-grid">
             <div className="profile-card__membership-item">
               <span className="profile-card__label">Membership Type</span>
-              <strong>{membership?.membershipType || 'Free'}</strong>
+              <strong>{membership?.membershipType || profile?.membershipType || 'Free'}</strong>
             </div>
             <div className="profile-card__membership-item">
               <span className="profile-card__label">Challenge Plan</span>
-              <strong>{membership?.challengePlan || 'Not selected'}</strong>
+              <strong>{membership?.challengePlan || profile?.challengePlan || 'Not selected'}</strong>
             </div>
             <div className="profile-card__membership-item">
               <span className="profile-card__label">Challenge Status</span>
-              <strong>{membership?.challengeStatus || 'Not started'}</strong>
+              <strong>{membership?.challengeStatus || profile?.challengeStatus || 'Not started'}</strong>
             </div>
             <div className="profile-card__membership-item">
               <span className="profile-card__label">Membership Status</span>
-              <strong>{membership?.membershipStatus || 'Active'}</strong>
+              <strong>{membership?.membershipStatus || profile?.membershipStatus || 'Active'}</strong>
             </div>
             <div className="profile-card__membership-item">
               <span className="profile-card__label">Target Days</span>
-              <strong>{membership?.targetDays || 0}</strong>
+              <strong>{membership?.targetDays ?? profile?.targetDays ?? 0}</strong>
             </div>
             {membership?.trialActive && (
               <>

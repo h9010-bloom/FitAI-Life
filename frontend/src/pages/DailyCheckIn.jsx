@@ -19,7 +19,7 @@ const DailyCheckIn = () => {
 
     try {
       setLoading(true);
-      const response = await axios.get('https://fitai-life-backend.onrender.com/api/checkin/today', {
+      const response = await axios.get('https://fitai-life-backend.onrender.com/api/checkins/today', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setData(response.data || null);
@@ -43,7 +43,7 @@ const DailyCheckIn = () => {
       const method = endpoint === 'present' ? 'post' : 'put';
       await axios({
         method,
-        url: `https://fitai-life-backend.onrender.com/api/checkin/${endpoint}`,
+        url: `https://fitai-life-backend.onrender.com/api/checkins/${endpoint}`,
         data: {},
         headers: { Authorization: `Bearer ${token}` },
       });

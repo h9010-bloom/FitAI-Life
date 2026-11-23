@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import { AuthContext } from '../context/AuthContext';
 import '../styles/login.css';
 
@@ -32,10 +32,7 @@ const Login = () => {
     setErrorMessage('');
 
     try {
-      const response = await axios.post(
-        'https://fitai-life-backend.onrender.com/api/auth/login',
-        formData
-      );
+      const response = await api.post('/api/auth/login', formData);
 
       const { token, user } = response.data;
 

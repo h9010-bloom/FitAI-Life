@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 
 import PremiumModal from "../components/PremiumModal/PremiumModal";
 import ChallengeFlowModal from "../components/ChallengeFlowModal/ChallengeFlowModal";
@@ -60,34 +60,18 @@ const Dashboard = () => {
   useEffect(() => {
 
     const fetchDashboardData = async () => {
-
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        setError("Please log in to continue.");
-        setLoading(false);
-        return;
-      }
-
       try {
-
-        // -------------------------
-        // Profile
-        // -------------------------
-
-        const profileResponse = await axios.get(
-          "https://fitai-life-backend.onrender.com/api/profile",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const [profileResponse, membershipResponse, trialResponse] = await Promise.all([
+          api.get("/api/profile"),
+          api.get("/api/membership"),
+          api.get("/api/membership/check-trial"),
+        ]);
 
         const userData =
           profileResponse.data.user || profileResponse.data;
 
         setProfile(userData);
+        setMembership(membershipResponse.data);
 
         // Show challenge completion popup
         if (userData.challengeCompletedPopup) {
@@ -109,34 +93,6 @@ const Dashboard = () => {
           navigate("/membership");
           return;
         }
-
-        // -------------------------
-        // Membership
-        // -------------------------
-
-        const membershipResponse = await axios.get(
-          "https://fitai-life-backend.onrender.com/api/membership",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        setMembership(membershipResponse.data);
-
-        // -------------------------
-        // Trial Check
-        // -------------------------
-
-        const trialResponse = await axios.get(
-          "https://fitai-life-backend.onrender.com/api/membership/check-trial",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
 
         if (
           trialResponse.data.membershipStatus === "Expired"
@@ -187,18 +143,7 @@ const Dashboard = () => {
     setShowPremiumModal(false);
 
     try {
-
-      const token = localStorage.getItem("token");
-
-      await axios.put(
-        "https://fitai-life-backend.onrender.com/api/profile/premium-popup",
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await api.put("/api/profile/premium-popup", {});
 
     } catch (error) {
       console.error(error);
@@ -663,18 +608,7 @@ const Dashboard = () => {
           setShowPremiumModal(false);
 
           try {
-
-            const token = localStorage.getItem("token");
-
-            await axios.put(
-              "https://fitai-life-backend.onrender.com/api/profile/premium-popup",
-              {},
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            );
+            await api.put("/api/profile/premium-popup", {});
 
           } catch (error) {
             console.error(error);

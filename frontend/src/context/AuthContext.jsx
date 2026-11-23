@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 
 export const AuthContext = createContext(null);
 
@@ -23,6 +23,21 @@ const getStoredAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(getStoredAuth().user);
   const [token, setToken] = useState(getStoredAuth().token);
+
+  useEffect(() => {
+    const syncAuth = () => {
+      const stored = getStoredAuth();
+      setUser(stored.user);
+      setToken(stored.token);
+    };
+
+    window.addEventListener('storage', syncAuth);
+    window.addEventListener('auth:update', syncAuth);
+    return () => {
+      window.removeEventListener('storage', syncAuth);
+      window.removeEventListener('auth:update', syncAuth);
+    };
+  }, []);
 
   const login = (userData, authToken) => {
   setUser(userData);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 import "../styles/register.css";
 import "../styles/register-food-preference.css";
 
@@ -75,9 +75,7 @@ const Register = () => {
     setLoading(true);
 
     try {
-      await axios.post(
-        'https://fitai-life-backend.onrender.com/api/auth/register',
-        {
+      await api.post('/api/auth/register', {
           name: formData.name,
           email: formData.email,
           password: formData.password,

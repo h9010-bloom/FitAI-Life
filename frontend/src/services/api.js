@@ -1,8 +1,12 @@
+
 import axios from 'axios';
 
 const apiBaseUrl = (
-  import.meta.env.VITE_API_URL || 'https://fitai-life-backend.onrender.com'
-).replace(/\/api\/?$/, '').replace(/\/$/, '');
+  import.meta.env.VITE_API_URL ||
+  'https://fitai-life-backend.onrender.com'
+)
+  .replace(/\/api\/?$/, '')
+  .replace(/\/$/, '');
 
 const api = axios.create({
   baseURL: apiBaseUrl,
@@ -11,16 +15,22 @@ const api = axios.create({
 
 api.interceptors.request.use((config) => {
   if (config.url && !/^https?:\/\//i.test(config.url)) {
-    const endpoint = config.url.startsWith('/') ? config.url : `/${config.url}`;
-    config.url = endpoint === '/api' || endpoint.startsWith('/api/')
-      ? endpoint
-      : `/api${endpoint}`;
+    const endpoint = config.url.startsWith('/')
+      ? config.url
+      : `/${config.url}`;
+
+    config.url =
+      endpoint === '/api' || endpoint.startsWith('/api/')
+        ? endpoint
+        : `/api${endpoint}`;
   }
 
   const token = localStorage.getItem('token');
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+
   return config;
 });
 
